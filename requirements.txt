@@ -1,0 +1,20 @@
+torch>=2.0.0
+transformers>=4.30.0
+tokenizers>=0.13.0
+datasets>=2.14.0
+tqdm>=4.65.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Optional but highly recommended for memory optimization
+bitsandbytes>=0.41.0  # For 8-bit AdamW optimizer
+
+# For Mamba blocks (highly recommended)
+# Install with: pip install mamba-ssm
+# Note: Requires CUDA toolkit and may need compilation
+# If installation fails, the code will fall back to SimplifiedMambaBlock
+mamba-ssm>=1.0.0
+
+# For monitoring (optional)
+tensorboard>=2.13.0
+wandb>=0.15.0
