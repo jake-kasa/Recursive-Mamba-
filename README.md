@@ -4,7 +4,7 @@ Training a novel hybrid state space model on dialogue data, optimized for RTX 20
 
 ## 🏗️ Architecture
 
-**RecursiveStateSpace** combines:
+**RecursiveStateSpace** combines: 
 - **48 physical Mamba (state space) blocks**
 - **5 recursive depths** = 240 effective layers!
 - **Memory-efficient**: Only stores 48 blocks, applies them recursively
