@@ -41,3 +41,47 @@ pip install mamba-ssm
 
 # If mamba-ssm fails to install (requires CUDA compilation):
 # The code will fall back to SimplifiedMambaBlock
+
+
+# Test with default config (48 blocks, depth 5, d=384)
+python dataset_alpaca.py
+
+# Test multiple configurations
+python dataset_alpaca.py --test_all
+
+# Test custom config
+python dataset_alpaca.py --n_blocks 36 --d_model 320
+
+✅ SUCCESS! Model fits in memory
+   Peak usage: 4.82GB / 6.0GB
+   Headroom: 1.18GB
+
+### Data prep
+{"context": ["User: Hello", "Assistant: Hi!"], "response": "How can I help?", "source": "lmsys"}
+
+# Full 48-block training (recommended)
+python train.py \
+    --data_path dialogues_combined.jsonl \
+    --epochs 2 \
+    --n_blocks 48 \
+    --recurrent_depth 5 \
+    --d_model 384 \
+    --batch_size 1 \
+    --accumulation_steps 16 \
+    --max_seq_len 256 \
+    --checkpoint_dir checkpoints
+
+# Estimated time: ~250 hours (10.5 days) on RTX 2060
+
+python train.py \
+    --data_path dialogues_combined.jsonl \
+    --epochs 2 \
+    --n_blocks 24 \
+    --recurrent_depth 5 \
+    --d_model 384
+    
+# Estimated time: ~100 hours (4 days)
+
+
+
+
